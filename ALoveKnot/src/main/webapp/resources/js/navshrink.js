@@ -1,0 +1,14 @@
+$(window).scroll(function(){
+	if($(document).scrollTop()>50){
+		$("nav").addClass("shrink");
+		$(".navbar-nav").addClass("shrink-nav");
+		$(".my-form").addClass("shrink-form");
+		$(".navbar-brand").addClass("shrink-brand");
+	}
+	else{
+		$("nav").removeClass("shrink");
+		$(".navbar-nav").removeClass("shrink-nav");
+		$(".my-form").removeClass("shrink-form");
+		$(".navbar-brand").removeClass("shrink-brand");
+	}
+});

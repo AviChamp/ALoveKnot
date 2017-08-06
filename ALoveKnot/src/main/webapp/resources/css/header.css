@@ -1,0 +1,53 @@
+/*Navigation bar*/
+/*Before Shrink*/
+.navbar-brand img{
+	height: 60px;
+	width: 250px;
+}
+.my-nav{
+    padding-top: 0px;	
+	width: 100%;
+	z-index: 999;
+	background-color: rgba(0,0,0,1);
+}
+.my-nav .navbar-nav a{
+	margin-top: 25px;
+	height: auto;
+	color: white !important;
+	font-size: 20px;
+	font-weight: 900;
+}
+.my-nav .navbar-nav .dropdown-menu a{
+	color: #000 !important;
+}
+.my-form{
+   padding-top: 25px;
+}
+.my-btn{
+	padding: 9px;
+}
+/*after shrinking*/
+nav.shrink{
+	background-color: rgba(0,0,0,0.8);
+	height: 60px;
+	padding-top: 0px;
+}
+nav.shrink img{
+	height: 50px;
+	width: 200px;
+}
+.navbar-nav.shrink-nav{
+	font-size: 20px;
+
+}
+.navbar-nav.shrink-nav a{
+	padding-top: 0px;
+}
+.my-form.shrink-form{
+	 padding-top: 10px;
+}
+.navbar-brand.shrink-brand{
+	padding-top: 10px;
+}
+
+/*Navbar end*/

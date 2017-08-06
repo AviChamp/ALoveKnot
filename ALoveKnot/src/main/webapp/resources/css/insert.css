@@ -1,0 +1,58 @@
+.con{
+	margin-top:120px;
+}
+.nav-bar {
+	border-bottom-style: solid;
+	border-width: 4px;
+	border-bottom-color: #337ab7;
+}
+.tab{
+	border-bottom-style: solid;
+	border-width: 4px;
+	border-bottom-color: #337ab7;
+    padding-bottom: 10px;
+}
+.contain input,.contain select{
+	margin-bottom: 10px;
+}
+.contain{
+	margin-left: -50px;
+}
+.inputfile-box {
+  position: relative;
+}
+#file {
+  display:none;
+}
+#file-name {
+  display: inline-block;
+  box-sizing: border-box;
+  width:600px;
+  height:34px;
+  padding:6px 12px;
+  font-size:14px;
+  line-height:1.42857143;
+  color:#555;
+  background-color:#fff;
+  background-image:none;
+  border:1px solid #ccc;
+  border-radius:4px;
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition:border-color ease-in-out .15s,
+  -webkit-box-shadow ease-in-out .15s;
+  -o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.file-button {
+  height: 37px;
+  background: #337ab7;
+  padding: 6px;
+  position: absolute;
+  border: 1px solid;
+  border-radius:5px;
+  color: #fff;
+  margin-top: -2px;
+  top: 0px;
+  right: 0px;
+}
