@@ -14,7 +14,8 @@
 
 	<!--Bootstrap and CSS-->
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/home.css"/>">	
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/home.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>">	
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 </head>
@@ -36,25 +37,21 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li><a href="#">Home</a></li>
+		        <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <c:forEach var="catVal" items="${catList}">
+			            <li><a href="${pageContext.request.contextPath}/serviceCustList?cid=<c:out value="${catVal.cid}"></c:out>">${catVal.categoryname}</a></li>
+		            </c:forEach>
 		          </ul>
 		        </li>
-		        <li><a href="insert">Admin</a></li>
+		        <li><a href="${pageContext.request.contextPath}/admin/insert">Admin</a></li>
 		        <li><a href="#">About</a></li>
 		      </ul>
 				 <form class="navbar-form navbar-left my-form">
-				  <div class="input-group">
-				    <input type="text" class="form-control" placeholder="Search">
+				  <div class="input-group search-input">
+				    <input type="text" class="form-control" id="search" placeholder="Search">
 				    <div class="input-group-btn">
 				      <button class="btn btn-default my-btn" type="submit">
 				        <i class="glyphicon glyphicon-search"></i>
@@ -62,14 +59,48 @@
 				    </div>
 				  </div>
 				</form> 
-		      <ul class="nav navbar-nav navbar-right right-search">
-		        <li><a href="register">Register</a></li>
-		        <li><a href="#">Login</a></li>
+		       <ul class="nav navbar-nav navbar-right right-search">
+		       <c:if test="${pageContext.request.userPrincipal.name==null}">
+		        <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
+		        <li><a  href="${pageContext.request.contextPath}/login">Login</a></li>
+               </c:if>
+               <c:if test="${pageContext.request.userPrincipal.name!=null}">
+                <li><a>Welcome: ${pageContext.request.userPrincipal.name} </a></li>
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
+               </c:if>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
-         
+		
+		<!-- 
+		onclick="document.getElementById('id01').style.display='block'"
+		<div id="id01" class="modal">
+		  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <form class="modal-content animate" action="#">
+		    <div class="imgcontainer">
+		      <img src="<c:url value="/resources/img/profile.png"/>" alt="Avatar" class="avatar">
+		    </div>
+		
+		    <div class="formcontainer">
+		      <label><b>Username</b></label>
+		      <input type="text" placeholder="Enter Username" name="uname" required>
+		
+		      <label><b>Password</b></label>
+		      <input type="password" placeholder="Enter Password" name="psw" required>
+		        
+		      <button type="submit">Login</button>
+		      <input type="checkbox" checked="checked"> Remember me
+		    </div>
+		
+		    <div class="formcontainer" style="background-color:#f1f1f1">
+		      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+		      <span class="psw"><a href="#">Forgot password?</a></span>
+		    </div>
+		  </form>
+		</div>
+				
+          -->
         <!--Carousel-->  
 		<div id="carousel-example-generic" class=" my-carousel carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
@@ -273,7 +304,7 @@
 			</div>
 			<div class="col-md-6 col-xs-6 text">
 				<p>
-			      no shadhi no vidhai bas chudhai hi chudhai
+			      Marriage is a mosaic you build with your spouse. Millions of tiny moments that create your love story.
 				</p>
 			</div>
 		</div>
@@ -281,6 +312,18 @@
 
     <!--Footer-->
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
+	<!--  
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+	
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+    </script>-->
 	
    <!--jquery (necessay for bootstrap javascript's plugins ) -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

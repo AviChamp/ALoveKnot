@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,8 +32,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.ModelMap;
 
+
+@RequestMapping("/admin")
 @Controller
 public class adminController {
 	
@@ -44,10 +48,11 @@ public class adminController {
 	
 	 @Autowired
 	 ServiceDaoImpl serviceDaoImpl;
-	 
+
 	 @RequestMapping("/insert")
-		 public String insertPage(){
-			 return "insert";
+		 public ModelAndView insertPage(){
+		 ModelAndView mav =new ModelAndView("insert");
+			 return mav;
 		}
 //     @RequestMapping(value="/insert",method=RequestMethod.GET)
 //	    public ModelAndView showInsert(){
@@ -88,7 +93,7 @@ public class adminController {
 	 }
     
 	 @RequestMapping(value="/saveServ", method=RequestMethod.POST)
-	 public String saveProduct(HttpServletRequest request,@RequestParam("simage") MultipartFile file){
+	 public String saveService(HttpServletRequest request,@RequestParam("simage") MultipartFile file){
 		 Service serv=new Service();
 		 serv.setServicename(request.getParameter("servicename"));
 		 serv.setPrice(Float.parseFloat(request.getParameter("price")));
@@ -113,6 +118,62 @@ public class adminController {
 		 }catch(Exception e){
 			 e.printStackTrace();
 		 }		 
-		 return "index";
+		 return "insert";
+	 }
+	 
+	 @RequestMapping("/deleteProduct/{sid}")
+	 public String deleteServ(@PathVariable("sid")int sid) {
+		 serviceDaoImpl.deleteService(sid);
+		 return "redirect:/insert?del";
+	 }
+	 
+	 @RequestMapping("/updateService")
+	 public ModelAndView updateServ(@RequestParam("sid")int sid){
+		 ModelAndView mav =new ModelAndView();
+		 Service serv=serviceDaoImpl.findById(sid);
+		 mav.addObject("serv",serv);
+		 mav.addObject("cList",categoryDaoImpl.retrieve());
+		 mav.addObject("vList",vendorDaoImpl.retrieve());
+		 mav.setViewName("updateServiceform");
+		 return mav;
+	 }
+	 
+	 @RequestMapping(value="/servUpdate", method=RequestMethod.POST)
+	 public String editService(HttpServletRequest request,@RequestParam("simage") MultipartFile file){
+		 
+		 String sid=request.getParameter("sid");
+		 String servicename=request.getParameter("servicename");
+		 String price=request.getParameter("price");
+		 String stock=request.getParameter("stock");
+		 String description=request.getParameter("description");
+		 String category=request.getParameter("category");
+		 String vendor=request.getParameter("vendor");
+		 
+		 Service serv=serviceDaoImpl.findById(Integer.parseInt(sid));
+		 
+		 serv.setServicename(servicename);
+		 serv.setPrice(Float.parseFloat(price));
+		 serv.setStock(Integer.parseInt(stock));
+		 serv.setDescription(description);
+		 serv.setCategory(categoryDaoImpl.findById(Integer.parseInt(category)));
+		 serv.setVendor(vendorDaoImpl.findById(Integer.parseInt(vendor)));
+		 
+		 String filepath=request.getSession().getServletContext().getRealPath("/");
+		 String filename=file.getOriginalFilename();
+		 serv.setImgname(filename);
+		 serviceDaoImpl.update(serv);
+		 filepath=filepath+"resources"+(char)92+filename;
+		 System.out.println("File path File: "+filepath);
+		 try {
+			 byte imagebyte[]=file.getBytes();
+			 BufferedOutputStream fos=new BufferedOutputStream(new FileOutputStream(filepath));
+			 fos.write(imagebyte);
+			 fos.close();
+		 }catch(IOException e){
+			 e.printStackTrace();
+		 }catch(Exception e){
+			 e.printStackTrace();
+		 }		 
+		 return "insert";
 	 }
 }

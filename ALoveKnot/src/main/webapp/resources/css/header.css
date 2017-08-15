@@ -7,7 +7,7 @@
 .my-nav{
     padding-top: 0px;	
 	width: 100%;
-	z-index: 999;
+	z-index: 30;
 	background-color: rgba(0,0,0,1);
 }
 .my-nav .navbar-nav a{
@@ -21,10 +21,17 @@
 	color: #000 !important;
 }
 .my-form{
-   padding-top: 25px;
+   padding-top: 15px;
 }
 .my-btn{
-	padding: 9px;
+	margin-top:0px;
+	margin-left:-7px;
+	height:34px;
+	width:34px;
+}
+#search{
+	padding-top:0px;
+	padding-bottom:0px;
 }
 /*after shrinking*/
 nav.shrink{
@@ -44,7 +51,7 @@ nav.shrink img{
 	padding-top: 0px;
 }
 .my-form.shrink-form{
-	 padding-top: 10px;
+	 padding-top: 2px;
 }
 .navbar-brand.shrink-brand{
 	padding-top: 10px;

@@ -1,6 +1,5 @@
 package com.config;
 
-
 import java.util.Properties;
 import javax.sql.DataSource;
 
@@ -31,15 +30,11 @@ public class hibernateConfig {
 	@Bean(name="dataSource")
 	public DataSource getH2DataSource()
 	{
-	   System.out.println("Data Source Method1");
+	   System.out.println("Data Source Method");
 	   DriverManagerDataSource dataSource = new DriverManagerDataSource();
-	   System.out.println("Data Source Method2");
 	   dataSource.setDriverClassName("org.h2.Driver");
-	   System.out.println("Data Source Method3");
 	   dataSource.setUrl("jdbc:h2:tcp://localhost/~/test");
-	   System.out.println("Data Source Method4");
 	   dataSource.setUsername("sa");
-	   System.out.println("Data Source Method5");
 	   dataSource.setPassword("");
 
 	   System.out.println("Data Source Created");

@@ -1,41 +1,43 @@
 .row{
-	padding-top: 80px;
+	margin-top: 80px;
 }
 .regestration-wall{
-	font-size: 19px;
+	font-size: 16px;
 	background-color: #ddd;
-	padding: 14px;
+	padding: 15px;
 	border-radius: 8px;
 	box-shadow: 8px 8px 2px rgba(3,3,3,.8);
 }
 .form-registratiom .form-control{
+	padding:0px;
 	font-size: 20px;
-	height: 45px;
-    padding: 10px; 
     box-sizing: border-box;
 }
-.form-registratiom .form-control:focus{
+.form-registratiom ,.form-control:focus{
 	z-index: 2;
 }
-.name input{
-	width: 309px;	
-	height: 45px;
-	padding: 10px;
+#name input{
+	width: 309px;
 	display: inline;
+	height: 45px;
+	padding: 0px;
+	font-size: 20px;
+}
+#bday select ,#bday input{
+	width: 204px;
+	display: inline;
+	height: 45px;
+	padding: 0px;
+	font-size: 20px;
+}
+#phone{
+	width: 620px;
+	height: 45px;
+	padding: 0px;
 	font-size: 20px;
 }
 .gender select,.password input,.email input{
 	height: 45px;
 	font-size: 20px;
-}
-.bday select ,.bday input{
-	width: 204px;
-	height: 45px;
-	display: inline;
-	font-size: 20px;
-}
-.phone input{
-	width: 620px;
-	height: 45px;
-	font-size: 20px;
+	padding: 0px;
 }

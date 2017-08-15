@@ -1,24 +1,10 @@
-.con{
-	margin-top:120px;
-}
-.nav-bar {
-	border-bottom-style: solid;
-	border-width: 4px;
-	border-bottom-color: #337ab7;
-}
-.tab{
-	border-bottom-style: solid;
-	border-width: 4px;
-	border-bottom-color: #337ab7;
-    padding-bottom: 10px;
+#contain{
+  margin-top: 90px;
 }
 #contain input,#contain select{
 	margin-bottom: 10px;
 	padding-top:0px;
 	padding-bottom:0px;
-}
-#contain{
-	margin-left: -50px;
 }
 .inputfile-box {
   position: relative;
@@ -26,7 +12,7 @@
 #file {
   display:none;
 }
-.file-name {
+#file-name {
   display: inline-block;
   box-sizing: border-box;
   width:600px;
@@ -58,11 +44,4 @@
   margin-top: -2px;
   top: 0px;
   right: 0px;
-}
-table{
-	margin-left:-15px;
-}
-th{
-	background-color: #500767;
-	color:#fff;
 }

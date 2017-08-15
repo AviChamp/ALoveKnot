@@ -8,15 +8,16 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags must come first in the head,then any other content must come after these tags -->
-
 	<link rel="icon" href="<c:url value="/resources/img/icon.png"/>">
 
 	<!--Bootstrap and CSS-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"/>">	
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">	
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"/>">	
 	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
 </head>
+<body>
+
 <body>
 <div class="header">
 		<nav class="my-nav navbar navbar-default navbar-inverse navbar-fixed-top ">
@@ -35,42 +36,45 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li><a href="#">Home</a></li>
+		        <li><a href="${pageContext.request.contextPath}/index">Home</a></li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <c:forEach var="catVal" items="${catList}">
+			            <li><a href="${pageContext.request.contextPath}/serviceCustList?cid=<c:out value="${catVal.cid}"></c:out>">${catVal.categoryname}</a></li>
+		            </c:forEach>
 		          </ul>
 		        </li>
-		        <li><a href="insert">Admin</a></li>
+		         <li><a href="${pageContext.request.contextPath}/admin/insert">Admin</a></li>
 		        <li><a href="#">About</a></li>
 		      </ul>
 		     <form class="navbar-form navbar-left my-form">
 		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
+		          <input type="text" id="search" class="form-control" placeholder="Search">
 		        </div>
 		        <button type="submit" class="btn btn-default my-btn"> <i class="glyphicon glyphicon-search"></i></button>
 		      </form>
-		      <ul class="nav navbar-nav navbar-right ">
-		        <li><a href="register">Register</a></li>
-		        <li><a href="#">Login</a></li>
+		       <ul class="nav navbar-nav navbar-right right-search">
+		       <c:if test="${pageContext.request.userPrincipal.name==null}">
+		        <li><a href="${pageContext.request.contextPath}/register">Register</a></li>
+		        <li><a  href="${pageContext.request.contextPath}/login">Login</a></li>
+               </c:if>
+               <c:if test="${pageContext.request.userPrincipal.name!=null}">
+                <li><a>Welcome: ${pageContext.request.userPrincipal.name} </a></li>
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
+               </c:if>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>	
-</div>
-
+     </div>
+    
    <!--jquery (necessay for bootstrap javascript's plugins ) -->
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
    <!-- include all the compiled plugins(below). or include individual file as needed-->
    <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
    <!--navigation script-->
    <script type="text/javascript" src="<c:url value="/resources/js/navshrink.js"/>"></script>
-    </body>
+    	
+   </body>
  </html>  

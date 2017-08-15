@@ -51,5 +51,30 @@ public class ServiceDaoImpl implements ServiceDao {
 		}
 		return s;
 	}
-
+   
+	public List<Service> getServiceByCID(int cid){
+		Session session=sessionFactory.openSession();
+		List<Service> services=null;
+		System.out.println("1");
+		session.beginTransaction();
+		services=session.createQuery("from Service where cid="+cid).list();
+		session.getTransaction().commit();
+		System.out.println("2");
+		return services;
+	}
+	
+	public void deleteService(int sid){
+		Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		Service service=(Service)session.get(Service.class, sid);
+		session.delete(service);
+		session.getTransaction().commit();
+	}
+	
+   public void update(Service serv) {
+	    Session session=sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(serv);
+		session.getTransaction().commit();
+   }	
 }

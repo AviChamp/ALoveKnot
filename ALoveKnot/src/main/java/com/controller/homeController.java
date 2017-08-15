@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,14 +19,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
-
+import com.daoImpl.CategoryDaoImpl;
+import com.daoImpl.ServiceDaoImpl;
 import com.daoImpl.UserDaoImpl;
+import com.daoImpl.VendorDaoImpl;
 import com.model.User;
 
 
 
 @Controller
 public class homeController {
+	
+	@Autowired
+	UserDaoImpl userDaoImpl;
+	
+	@Autowired
+	CategoryDaoImpl categoryDaoImpl;
+	 
+	@Autowired
+	VendorDaoImpl vendorDaoImpl;
+	
+	@Autowired
+	ServiceDaoImpl serviceDaoImpl;
+	
     @RequestMapping("/")
     public String index() {
     	return "index";
@@ -35,8 +51,6 @@ public class homeController {
     public String home() {
     	return "index";
     }
-    @Autowired
-    UserDaoImpl userDaoImpl;
     
     @RequestMapping(value="/register",method=RequestMethod.GET)
     public ModelAndView showRegister(){
@@ -87,4 +101,40 @@ public class homeController {
         list.add("December");
         return list;
            }
+	 
+	 @RequestMapping("/serviceCustList")
+	 public ModelAndView serviceCustList(@RequestParam("cid")int cid){
+		 System.out.println(cid);
+		 ModelAndView mav =new ModelAndView();
+		 mav.addObject("serviceList",serviceDaoImpl.getServiceByCID(cid));
+		 mav.setViewName("serviceCustList");
+		 return mav;
+	 }
+	 
+	 @ModelAttribute
+	 public void addAttribute(Model m) {
+		 m.addAttribute("catList",categoryDaoImpl.retrieve());
+		 m.addAttribute("vendList",vendorDaoImpl.retrieve());
+		 m.addAttribute("servList",serviceDaoImpl.retrieve());
+	 }
+	 
+	 @RequestMapping("/login")
+	 public ModelAndView login(@RequestParam(value="error", required=false)String error){
+		 ModelAndView mav =new ModelAndView("/login");
+		 if(error!=null){
+			 mav.addObject("message","Invalid Username and Password");
+		 }
+		 mav.addObject("title","login");
+		 return mav;
+	 }
+	 @RequestMapping("/error")
+	 public String errorPage(){
+		 return "/error";
+	 }
+     
+	 @RequestMapping("/userLogged")
+	 public String userLogged(){
+		 return "redirect:/index";
+	 }
+	 
 }

@@ -19,12 +19,12 @@
     <li class="active"><a data-toggle="pill" href="#Category">Category</a></li>
     <li><a data-toggle="pill" href="#Vendor">Vendor</a></li>
     <li><a data-toggle="pill" href="#Service">Service</a></li>
-    <li><a data-toggle="pill" href="#list">List</a></li>
+    <li><a data-toggle="pill" href="#list">Service List</a></li>
   </ul>
   
   <div class="tab-content tab">
     <div id="Category" class="tab-pane fade in active">
-     <div class="container contain"> 
+     <div class="container" id="contain"> 
       <div class="row">
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <center><h1 class="main_heading">Add Category</h1></center>
@@ -43,7 +43,7 @@
     </div>
    
     <div id="Vendor" class="tab-pane fade">
-    <div class="container contain"> 
+    <div class="container" id="contain"> 
       <div class="row">
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <center><h1 class="main_heading">Add Vendor</h1></center>
@@ -62,7 +62,7 @@
     </div>
 
     <div id="Service" class="tab-pane fade">
-    <div class="container contain"> 
+    <div class="container" id="contain"> 
       <div class="row">
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <h1 class="main_heading"><center>Add Service</center></h1>
@@ -94,7 +94,7 @@
                 <div class="inputfile-box">
                   <input type="file" name="simage" id="file" class="inputfile" onchange='uploadFile(this)'>
                   <label for="file">
-                    <span id="file-name" class="file-box"></span>
+                    <span  id="file-name" class="file-name" class="file-box"></span>
                     <span class="file-button">
                       <i class="fa fa-upload" aria-hidden="true"></i>
                       Upload Image
@@ -109,8 +109,45 @@
     </div>
     </div>
     <div id="list" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+     <div class="container" id="sertable">
+      <h1 class="main_heading"><center>Service List</center></h1>
+      <table class="table table-hover display" border="1" width="90" align="center">
+        <tr>
+           <th>S.No</th>
+           <th>SID</th>
+           <th>Service Name</th>
+           <th>Category</th>
+           <th>Vendor</th>
+           <th>Price</th>
+           <th>Stock</th>
+           <th style="width:15">Description</th>
+           <th>Image</th>
+           <th class="span2">Action</th>
+        </tr>
+        <c:if test="${empty servList}">
+           <tr><td colspan="10" align="center">No record exists</td></tr>
+        </c:if>
+        <tr>
+        <c:forEach var="c" varStatus="st" items="${servList}">
+          <tr>
+           <td><c:out value="${st.count}"></c:out></td>
+           <td><c:out value="${c.sid }"></c:out></td>
+           <td><c:out value="${c.servicename }"></c:out></td>
+           <td><c:out value="${c.category.categoryname }"></c:out></td>
+           <td><c:out value="${c.vendor.vendorname }"></c:out></td>
+           <td><c:out value="${c.price }"></c:out></td>
+           <td><c:out value="${c.stock }"></c:out></td>
+           <td class="span2"><c:out value="${c.description }"></c:out></td>
+           <td><img src="${pageContext.request.contextPath}/resources/${c.imgname}" height="50px" width="50px"></td>
+           <td class="span4">
+                <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
+                 <a class="btn btn-info" role="button" href="<c:url value="/deleteProduct/${c.sid}"/>">Delete</a>
+                 <a class="btn btn-info" role="button" href="${contextRoot}/updateService?sid=<c:out value="${c.sid}"></c:out>">Update</a>
+           </td>
+        </tr>
+        </c:forEach>
+      </table>
+     </div> 
     </div>
   </div>
 </div>

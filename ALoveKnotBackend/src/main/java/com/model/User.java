@@ -21,6 +21,7 @@ public class User implements Serializable {
 	private String gender;
 	private String phonNo;
 	private String role;
+	private boolean enabled;
 
      //getters and setters
 	public String getFirstName() {
@@ -82,5 +83,12 @@ public class User implements Serializable {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}	
+	
 }
