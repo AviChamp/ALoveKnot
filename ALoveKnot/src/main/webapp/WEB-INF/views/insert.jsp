@@ -29,7 +29,7 @@
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <center><h1 class="main_heading">Add Category</h1></center>
           <div class="wall ">
-             <form action="<c:url value="/saveCat"/>" method="post" class="form-registratiom" >
+             <form action="<c:url value="/admin/saveCat"/>" method="post" class="form-registratiom" >
               <p>Category ID</p>
                    <input type="text" name="cid" placeholder="Category ID" autofocus="true" class="form-control " >                 
               <p>Category Name</p>                    
@@ -48,7 +48,7 @@
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <center><h1 class="main_heading">Add Vendor</h1></center>
           <div class="regestration-wall ">
-             <form action="<c:url value="/saveVend"/>" method="post" class="form-registratiom" >
+             <form action="<c:url value="/admin/saveVend"/>" method="post" class="form-registratiom" >
               <p>Vendor ID</p>
                    <input type="text" name="vid" placeholder="Vendor ID" autofocus="true" class="form-control">    
                 <p>Vendor Name</p>
@@ -67,7 +67,7 @@
         <div class="col-am-1 col-md-7 col-md-offset-3">
           <h1 class="main_heading"><center>Add Service</center></h1>
           <div class="regestration-wall ">
-             <form action="<c:url value="/saveServ"/>" method="post" enctype="multipart/form-data" class="form-registratiom" >
+             <form action="<c:url value="/admin/saveServ"/>" method="post" enctype="multipart/form-data" class="form-registratiom" >
               <p>Service Name</p>
                    <input type="text" name="servicename" placeholder="Service Name" autofocus="true" class="form-control" >             
                 <p>Price</p> 
@@ -141,8 +141,8 @@
            <td><img src="${pageContext.request.contextPath}/resources/${c.imgname}" height="50px" width="50px"></td>
            <td class="span4">
                 <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
-                 <a class="btn btn-info" role="button" href="<c:url value="/deleteProduct/${c.sid}"/>">Delete</a>
-                 <a class="btn btn-info" role="button" href="${contextRoot}/updateService?sid=<c:out value="${c.sid}"></c:out>">Update</a>
+                 <a class="btn btn-info" role="button" href="<c:url value="/admin/deleteProduct/${c.sid}"/>">Delete</a>
+                 <a class="btn btn-info" role="button" href="${contextRoot}/admin/updateService?sid=<c:out value="${c.sid}"></c:out>">Update</a>
            </td>
         </tr>
         </c:forEach>

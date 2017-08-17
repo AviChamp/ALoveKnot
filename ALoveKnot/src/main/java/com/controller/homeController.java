@@ -23,6 +23,7 @@ import com.daoImpl.CategoryDaoImpl;
 import com.daoImpl.ServiceDaoImpl;
 import com.daoImpl.UserDaoImpl;
 import com.daoImpl.VendorDaoImpl;
+import com.model.Service;
 import com.model.User;
 
 
@@ -136,5 +137,12 @@ public class homeController {
 	 public String userLogged(){
 		 return "redirect:/index";
 	 }
-	 
+
+	 @RequestMapping("/serviceDetail/{sid}")
+	 public ModelAndView serviceDetail(@PathVariable("sid")int sid){
+		 ModelAndView mav= new ModelAndView("serviceDetail");
+		 Service service=serviceDaoImpl.findById(sid);
+		 mav.addObject("service",service);
+		 return mav;
+	 }
 }

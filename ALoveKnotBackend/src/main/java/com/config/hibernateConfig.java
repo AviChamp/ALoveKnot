@@ -18,7 +18,9 @@ import com.daoImpl.CategoryDaoImpl;
 import com.daoImpl.ServiceDaoImpl;
 import com.daoImpl.UserDaoImpl;
 import com.daoImpl.VendorDaoImpl;
+import com.model.Cart;
 import com.model.Category;
+import com.model.Orders;
 import com.model.Vendor;
 import com.model.Service;
 
@@ -58,6 +60,8 @@ public class hibernateConfig {
 	sessionBuilder.addAnnotatedClass(Category.class);
 	sessionBuilder.addAnnotatedClass(Vendor.class);
 	sessionBuilder.addAnnotatedClass(Service.class);
+	sessionBuilder.addAnnotatedClass(Cart.class);
+	sessionBuilder.addAnnotatedClass(Orders.class);
 	//sessionBuilder.scanPackages("com.model");
 	return sessionBuilder.buildSessionFactory();
 	}

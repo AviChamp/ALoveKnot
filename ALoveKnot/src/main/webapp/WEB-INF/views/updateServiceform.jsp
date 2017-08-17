@@ -19,7 +19,7 @@
           <h1 class="main_heading"><center>Update Service</center></h1>
           <div class="regestration-wall ">
           
-             <form action="<c:url value="/servUpdate"/>" method="post" enctype="multipart/form-data" class="form-registratiom" >
+             <form action="<c:url value="/admin/servUpdate"/>" method="post" enctype="multipart/form-data" class="form-registratiom" >
                    <input type="hidden" name="sid" value="${serv.sid }">
               <p>Service Name</p>
                    <input type="text" name="servicename" value="${serv.servicename }" placeholder="Service Name" autofocus="true" class="form-control" >             

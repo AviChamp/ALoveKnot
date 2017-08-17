@@ -26,9 +26,10 @@
            <th>Stock</th>
            <th style="width:15">Description</th>
            <th>Image</th>
+           <th>More Info</th>
         </tr>
         <c:if test="${empty serviceList}">
-           <tr><td colspan="9" align="center">No record exists</td></tr>
+           <tr><td colspan="10" align="center">No record exists</td></tr>
         </c:if>
         
         <c:forEach var="c" varStatus="st" items="${serviceList}">
@@ -42,6 +43,7 @@
            <td><c:out value="${c.stock }"></c:out></td>
            <td class="span2"><c:out value="${c.description }"></c:out></td>
            <td><img src="${pageContext.request.contextPath}/resources/${c.imgname}" height="50px" width="50px"></td>
+           <td><a class="btn btn-info" role="button" href="<c:url value="/serviceDetail/${c.sid}"/>">More Details</a></td>
           </tr>
         </c:forEach>
       </table>

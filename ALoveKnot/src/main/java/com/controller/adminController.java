@@ -124,7 +124,7 @@ public class adminController {
 	 @RequestMapping("/deleteProduct/{sid}")
 	 public String deleteServ(@PathVariable("sid")int sid) {
 		 serviceDaoImpl.deleteService(sid);
-		 return "redirect:/insert?del";
+		 return "redirect:/admin/insert?del";
 	 }
 	 
 	 @RequestMapping("/updateService")

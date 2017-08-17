@@ -47,7 +47,6 @@
 							class="cancelbtn">Cancel</button>
 						<span class="psw"><a href="#">Forgot password?</a></span>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 
 			</div>
