@@ -37,7 +37,7 @@ public class CartDaoImpl {
 		List<Cart> cr=null;
 		try{
 			session.beginTransaction();
-			cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email").list();
+			cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email").setString("email",userId).list();
 			session.getTransaction().commit();
 		}catch(HibernateException ex){
 			ex.printStackTrace();
@@ -51,7 +51,7 @@ public class CartDaoImpl {
     	List<Cart> cr=null;
     	try {
         	session.beginTransaction();
-    	    cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email and cartProductID=:id").setString("email",userEmail).setInteger("id", cartId).uniqueResult();
+    	    cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email and cartServiceID=:id").setString("email",userEmail).setInteger("id", cartId).uniqueResult();
     	    session.getTransaction().commit();
     	   }catch(HibernateException ex) {
     		   ex.printStackTrace();

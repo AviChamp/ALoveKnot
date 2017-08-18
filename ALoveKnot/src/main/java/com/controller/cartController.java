@@ -42,7 +42,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.ModelMap;
 
-@RequestMapping("/user")
+@RequestMapping("/cart")
 @Controller
 public class cartController {
 	@Autowired
