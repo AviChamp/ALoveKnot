@@ -1,6 +1,5 @@
 package com.daoImpl;
 
-
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -46,12 +45,12 @@ public class CartDaoImpl {
 		return cr;
 	}
 
-    public List<Cart> getCartById(int cartId, String userEmail) {
+    public Cart getCartById(int cartId, String userEmail) {
     	Session session =sessionFactory.openSession();
-    	List<Cart> cr=null;
+    	Cart cr=null;
     	try {
         	session.beginTransaction();
-    	    cr=(List<Cart>)session.createQuery("from Cart where userMailId=:email and cartServiceID=:id").setString("email",userEmail).setInteger("id", cartId).uniqueResult();
+    	    cr=(Cart) session.createQuery("from Cart where userMailId=:email and cartServiceID=:id").setString("email",userEmail).setInteger("id", cartId).uniqueResult();
     	    session.getTransaction().commit();
     	   }catch(HibernateException ex) {
     		   ex.printStackTrace();

@@ -13,7 +13,8 @@
 <!--Header-->
 	<jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 <!-- Body -->
-<h2><img alt="cart" src="<c:url value="/resources/img/cart.png"/>"></h2>
+<div style="margin-top: 100px;">
+<h2><img alt="cart" src="<c:url value="/resources/img/cart.png"/>" height="200px" width="200px" ></h2>
 <table id="cart" class="table table-hover table-condensed">
   <thead>
     <tr>
@@ -31,27 +32,29 @@
            <td colspan="6" allign="center">No Record Exist</td>
          </tr>  
     </c:if>
-    <c:set var="gtot" value="0"></c:set>
     <c:forEach var="c" varStatus="st" items="${cartInfo}">
        <tr>
           <td><c:out value="${c.cartServiceName}"></c:out></td>
           <td><c:out value="${c.cartQuantity }"></c:out></td>
           <td><c:out value="${c.cartPrice }"></c:out></td>
-          <td><img src="${pageContext.request.contextPath}/resources/<c:out value="${c.cartImage}"></c:out>"></td>
+          <td><img src="${pageContext.request.contextPath}/resources/<c:out value="${c.cartImage}"></c:out>" height="50px" width="50px"></td>
           <td><c:out value="${c.cartQuantity * c.cartPrice}"></c:out></td>
           <td><a class="btn btn-info" role="button" href="${pageContext.request.contextPath}/cart/deleteCart/${c.cartId}">Delete</a></td>
-          <c:set var="gtot" value="${gtot+ cartPrice * cartQuantity}"></c:set>
+          <td><c:set var="gtot" value="${gtot+ c.cartPrice * c.cartQuantity}"></c:set></td>
        </tr>
     </c:forEach>
     <tr>
-       <td><span class="col-lg-9" allign="right"><c:out value="${gtot}"></c:out></span></td>
+       <td><span class="col-lg-9" allign="right"><b>Total:</b> <c:out value="${gtot}"></c:out></span></td>
     </tr>
   </tbody>
   <tfoot>
+    <form method="Post" action="${pageContext.request.contextPath}/cart/checkout">
      <td><a href="${pageContext.request.contextPath}/index" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping</a></td>
-     <td><a href="${pageContext.request.contextPath}/checkout" class="btn btn-success btn-block">Checkout<i class="fa fa-angle-right"></i></a></td>  
+     <td><button type="submit" class="btn btn-lg btn-primary btn-block">Checkout<i class="fa fa-angle-right"></i></button></td>  
+    </form>
   </tfoot>
 </table>
+</div>
 <!--Footer-->
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 	

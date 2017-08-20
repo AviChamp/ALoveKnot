@@ -66,16 +66,16 @@ public class cartController {
 	@RequestMapping(value="/addToCart", method=RequestMethod.POST)
      public ModelAndView addToCart(HttpServletRequest req){
 		 ModelAndView mav=new ModelAndView();
+		 Principal principal =req.getUserPrincipal();
+		 String userEmail=principal.getName();
 		 try{
-			 Principal principal =req.getUserPrincipal();
-			 String userEmail=principal.getName();
 			 int sid=Integer.parseInt(req.getParameter("sid"));		 
 			 Double cartPrice=Double.parseDouble(req.getParameter("price"));
 			 int cartQuantity=Integer.parseInt(req.getParameter("cartQuantity"));
 		     String servicename=req.getParameter("servicename");
 		     String imgname=req.getParameter("imgname");
-		     Cart exists=(Cart) cartDaoImpl.getCartById(sid,userEmail);
-		     if(exists==null){
+		     Cart cartExists=cartDaoImpl.getCartById(sid, userEmail);
+		     if(cartExists==null){
 		    	 Cart cr=new Cart();
 		    	 cr.setCartPrice(cartPrice);
 		    	 cr.setCartServiceID(sid);
@@ -86,8 +86,9 @@ public class cartController {
 		    	 cr.setCartUserDetails(u);
 		    	 cartDaoImpl.insertService(cr);
 		     }
-		     else if(exists!=null){
+		     else{
 		    	 Cart cr=new Cart();
+		    	 cr.setCartId(cartExists.getCartId());
 		    	 cr.setCartPrice(cartPrice);
 		    	 cr.setCartServiceID(sid);
 		    	 cr.setCartServiceName(servicename);
@@ -101,6 +102,7 @@ public class cartController {
 		    mav.setViewName("cart");
 		    return mav;
 		 }catch(Exception e){
+			 e.printStackTrace();
 			 mav.setViewName("login");
 			 return mav;			 
 		 }
