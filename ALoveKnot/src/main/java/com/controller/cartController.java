@@ -116,12 +116,14 @@ public class cartController {
 		 String userEmail=principal.getName();
 		 Double total=Double.parseDouble(req.getParameter("total"));
 		 String payment=req.getParameter("payment");
-		 User u=userDaoImpl.findById(userEmail);
-		 ord.setUser(u);
+		 User user=userDaoImpl.findById(userEmail);
+		 ord.setUser(user);
 		 ord.setTotal(total);
 		 ord.setPayment(payment);
 		 orderDaoImpl.insertService(ord);
-	     mav.addObject("orderDetails", u);
+		 List<Cart> cart=cartDaoImpl.findCartByID(userEmail);
+	     mav.addObject("user",user);
+		 mav.addObject("cart",cart);
 	     return mav;
 	}
 	

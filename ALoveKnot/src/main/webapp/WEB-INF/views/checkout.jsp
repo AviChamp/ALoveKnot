@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib prefix = "fmt" uri ="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -110,8 +112,8 @@
 	   <div class="receipt-header receipt-header-mid receipt-footer">
 		<div class="col-xs-8 col-sm-8 col-md-8 text-left">
 		 <div class="receipt-right">
-		   <p><b>Date :</b> 15 Aug 2016</p>
-		   <h5 style="color: rgb(140, 140, 140);">Thank you for shoping</h5>
+		   <c:set var = "now" value = "<%= new java.util.Date()%>" />
+		   <p><b>Date :</b>  <fmt:formatDate type = "date" value = "${now}" /></p>
 		 </div>
 		</div>
 	   </div>
@@ -134,14 +136,14 @@
            </div>
 
            <div class="panel-body">
-            <form role="form" id="payment-form" method="POST" action="#">
+            <form role="form" id="payment-form" action="<c:url value="/cart/invoiceprocess"/>" method="POST">
                <div class="row">
                  <div class="col-xs-12">
                    <div class="form-group">
                      <br>
                      <label for="cardNumber">CARD NUMBER</label>
                      <div class="input-group">
-                       <input type="tel" class="form-control" name="cardNumber" placeholder="Valid Card Number" autocomplete="cc-number" required  />
+                       <input type="tel" class="form-control" name="payment" placeholder="Valid Card Number" autocomplete="cc-number" required  />
                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                       </div>
                      </div>                            
@@ -171,6 +173,7 @@
                    </div>
                    <div class="row">
                     <div class="col-xs-12">
+                     <input type="hidden" value="${gtot}" name="total">
                      <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Pay</button>
                     </div>
                    </div>
