@@ -145,4 +145,11 @@ public class homeController {
 		 mav.addObject("service",service);
 		 return mav;
 	 }
+	 
+	 @RequestMapping("/aboutUs")
+	 public String aboutUs(){
+		 return "aboutUs";
+	 }
+
+	 
 }

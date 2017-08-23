@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Content-Type" content="text/html" charset=ISO-8859-1">
   <title>Service Detail</title>
     
   <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">	
@@ -59,10 +59,11 @@
 								 <input type="hidden" value="${service.sid}" name="sid"/>
 		                         <input type="hidden" value="${service.price}" name="price"/>
 		                         <input type="hidden" value="${service.servicename}" name="servicename"/>
-             		             <input type="hidden" value="${service.imgname}" name="imgname"/>
-								 <input type="number" class="form-control" name="cartQuantity" required><br>
-								 
-								 <button id="add-to-cart"class=" btn btn-default" type="submit">add to cart</button>
+             		             <input type="hidden" value="${service.imgname}" name="imgname"/>								 
+							     <input type="number" class="form-control" name="cartQuantity" required><br>
+								 <p align="right"> 
+								    <button id="add-to-cart"class=" btn btn-default" type="submit">add to cart</button>
+							     </p>
 							</form>
 						</div>
 					</div>

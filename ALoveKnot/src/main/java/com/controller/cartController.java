@@ -150,4 +150,13 @@ public class cartController {
 	     return mav;
 	}
 	
+	@RequestMapping(value="/myCart", method=RequestMethod.GET)
+    public ModelAndView Cart(HttpServletRequest req){
+		ModelAndView mav=new ModelAndView();
+		Principal principal =req.getUserPrincipal();
+		String userEmail=principal.getName();
+		mav.addObject("cartInfo",cartDaoImpl.findCartByID(userEmail));
+	    mav.setViewName("cart");
+	    return mav;
+	}
 }

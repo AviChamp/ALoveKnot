@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +31,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="#"><img src="<c:url value="/resources/img/icon.png"/>"></a>
+		      <a class="navbar-brand" href="${pageContext.request.contextPath}/index"><img src="<c:url value="/resources/img/icon.png"/>"></a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,8 +46,10 @@
 		            </c:forEach>
 		          </ul>
 		        </li>
-		         <li><a href="${pageContext.request.contextPath}/admin/insert">Admin</a></li>
-		        <li><a href="#">About</a></li>
+		        <sec:authorize access="hasRole('ROLE_ADMIN')">
+		          <li><a href="${pageContext.request.contextPath}/admin/insert">Admin</a></li>
+		        </sec:authorize>
+		        <li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
 		      </ul>
 		     <form class="navbar-form navbar-left my-form">
 		        <div class="form-group">
@@ -60,7 +63,10 @@
 		        <li><a  href="${pageContext.request.contextPath}/login">Login</a></li>
                </c:if>
                <c:if test="${pageContext.request.userPrincipal.name!=null}">
-                <li><a>Welcome: ${pageContext.request.userPrincipal.name} </a></li>
+                <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li> 
+                <sec:authorize access="hasRole('ROLE_USER')">
+                   <li><a href="<c:url value="/cart/myCart"/>"><i class="fa fa-shopping-cart" style="color: #fff;" aria-hidden="true"></i></span></a></li>
+                </sec:authorize>
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
                </c:if>
 		      </ul>
