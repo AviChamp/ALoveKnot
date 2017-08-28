@@ -2,8 +2,13 @@ package com.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Component;
+
+import com.annotation.Unique;
+
 
 @Entity
 @Table(name="User")
@@ -13,7 +18,10 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	@Id
+	@Unique(message="That username is taken. Try another.")
 	private String email;
+	
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}",message="Password must contain atleast 1 capital letter, 1 number and 1 special character")
 	private String password;
 	private int date;
 	private String month;

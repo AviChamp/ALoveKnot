@@ -39,7 +39,7 @@
           <td><c:out value="${c.cartPrice }"></c:out></td>
           <td><img src="${pageContext.request.contextPath}/resources/<c:out value="${c.cartImage}"></c:out>" height="50px" width="50px"></td>
           <td><c:out value="${c.cartQuantity * c.cartPrice}"></c:out></td>
-          <td><a class="btn btn-info" role="button" href="${pageContext.request.contextPath}/cart/deleteCart/${c.cartId}">Delete</a></td>
+          <td><a class="btn btn-danger" role="button" href="${pageContext.request.contextPath}/cart/deleteCart/${c.cartId}">Delete</a></td>
           <td><c:set var="gtot" value="${gtot+ c.cartPrice * c.cartQuantity}"></c:set></td>
        </tr>
     </c:forEach>

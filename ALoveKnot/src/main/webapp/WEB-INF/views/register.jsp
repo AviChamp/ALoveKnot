@@ -34,10 +34,12 @@
                 <div class="email">
                 <f:input path="email"  type="email" placeholder="Avichamp@love.knot" class="form-control" autofocus="true" required="true"/> 
                 </div>
+                <f:errors path="email" class="error"></f:errors>
                 <p>Enter password</p>
                 <div class="password">
                 <f:input path="password" type="password" placeholder="Password" class="form-control" autofocus="true" required="true"/> 
                 </div>
+                <f:errors path="password" class="error"></f:errors>
                 <div id="bday">
                   <p>Birthday</p>
                     <f:input path="date" placeholder="Date" class="form-control" autofocus="true" required="true"/>
@@ -59,7 +61,7 @@
                 <br>
                 <p class="terms">
                     <label>
-                      <input type="checkbox" name="remember_me"  >
+                      <input type="checkbox" name="remember_me" required >
                       I accept <a href="">Terms & Conditions</a>
                     </label>
                 </p>

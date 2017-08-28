@@ -1,6 +1,9 @@
 .row{
 	margin-top: 80px;
 }
+.error{
+	color:red;
+}
 .regestration-wall{
 	font-size: 16px;
 	background-color: #ddd;

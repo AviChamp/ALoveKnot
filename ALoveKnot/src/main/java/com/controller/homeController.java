@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
@@ -62,13 +64,14 @@ public class homeController {
                  }
     
     @RequestMapping(value="/saveregister", method=RequestMethod.POST)
-    public ModelAndView saveRegister(@ModelAttribute("user") User user, BindingResult result) {
+    public ModelAndView saveRegister(@Valid @ModelAttribute("user") User user, BindingResult result) {
     	ModelAndView mav =new ModelAndView();
     	if(result.hasErrors()) {
     		mav.setViewName("register");
     	}
     	else {
     		user.setRole("ROLE_USER");
+    		user.setEnabled(true);
     		userDaoImpl.insertUser(user);
     		mav.setViewName("redirect:/index");
     	}
