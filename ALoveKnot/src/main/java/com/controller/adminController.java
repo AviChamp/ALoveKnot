@@ -14,7 +14,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.daoImpl.CartDaoImpl;
 import com.daoImpl.CategoryDaoImpl;
+import com.daoImpl.OrderDaoImpl;
 import com.daoImpl.ServiceDaoImpl;
 import com.daoImpl.VendorDaoImpl;
 import com.model.Category;
@@ -48,6 +50,13 @@ public class adminController {
 	
 	 @Autowired
 	 ServiceDaoImpl serviceDaoImpl;
+	 
+	 @Autowired
+	 CartDaoImpl cartDaoImpl;
+
+	 @Autowired
+	 OrderDaoImpl orderDaoImpl;
+
 
 	 @RequestMapping("/insert")
 		 public ModelAndView insertPage(){

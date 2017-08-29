@@ -11,8 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.dao.CategoryDao;
 import com.model.Category;
 
-
-
 @Repository("categoryDaoImpl")
 public class CategoryDaoImpl implements CategoryDao {
 	

@@ -34,7 +34,7 @@
    .who-we h2{color:#d9534f;}
     /* cards*/
    .cards-row{padding-top:10px; padding-bottom:50px; background:#eee;}
-   .thumbnail{padding:0; margin-top:-700px; border-radius:0; border:none; box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);}
+   .thumbnail{padding:0; margin-top:20px; border-radius:0; border:none; box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);}
    .thumbnail>img{width:100%; display:block;height: 480px;}
    .thumbnail h3{font-size:26px; color:#336;}
    .thumbnail h3,.card-description{margin:0; padding:8px 0; border-bottom:solid 1px #eee; text-align:center;}

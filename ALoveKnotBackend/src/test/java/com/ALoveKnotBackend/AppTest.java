@@ -1,4 +1,4 @@
-package weddingVendorProvider.ALoveKnotBackend;
+package com.ALoveKnotBackend;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -108,16 +108,36 @@ nav.shrink img{
 .my-collapse{
 	margin-top: 10px;
 }
-.row{
+.ro{
 	margin-top: 800px;	
 }
-.row .text p{
+.ro .text p{
 	color: skyblue;
 	font-size: 40px;
 	font-family: 'Lobster', sans-serif;
 	padding-top: 80px;
 }
 /*carousel End*/
+/*products on hike start*/
+.btn-product{
+	width: 100%;
+	padding-right: 60px;
+}
+.plan:hover {
+  background-color: #fff;
+  -moz-box-shadow: 0 0 12px 3px #b0b2ab;
+  -webkit-box-shadow: 0 0 12px 3px #b0b2ab;
+  box-shadow: 0 0 12px 3px #b0b2ab;
+}
+.plan{
+	height: 620px;
+}
+.plan img{
+	height: 400px;
+}
+
+
+/*products on hike end*/
 /*footer Start*/
 .footer-distributed{
 	background-color: #191c1f;

@@ -304,7 +304,7 @@
 	
 	<!--Body-->
 	<div class="container">
-		<div class="row">
+		<div class="ro">
 			<div class="col-md-6 col-xs-6 main1-img">
 				<img class="img-responsive" src="<c:url value="/resources/img/main1.jpg"/>"> 
 			</div>
@@ -315,7 +315,100 @@
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
+	<br>
+	<center><h2>Most Demanding Service of this week</h2></center>
+	<br>
+	<!-- Products on hike -->
+	<div class="contai">
+    <div class="row">
+    	<div class="col-md-12">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail plan" >
+					<h4 class="text-center"><span class="label label-info">Decorator</span></h4>
+					<img src="<c:url value="/resources/img/deco.jpg"/>" class="img-responsive">
+					<div class="caption">
+						<div class="row">
+							<div class="col-md-6 col-xs-6">
+								<h3>Vandhana Decorator</h3>
+							</div>
+							<div class="col-md-6 col-xs-6 price text-right">
+								<h3><label><i class="fa fa-inr"></i>1000000.0</label></h3>
+							</div>
+						</div>
+						<p>it is best ever</p>
+						<div class="row">
+							<div class="col-md-6">
+								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span>Like</a> 
+							</div>
+							<div class="col-md-6">
+								<a href="<c:url value="/serviceDetail/41"/>" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Buy</a></div>
+						</div>
 
+						<p> </p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail plan" >
+					<h4 class="text-center"><span class="label label-info">Palace</span></h4>
+					<img src="<c:url value="/resources/img/palace.jpg"/>" class="img-responsive">
+					<div class="caption">
+						<div class="row">
+							<div class="col-md-6 col-xs-6">
+								<h3>Vasundhara Mahal</h3>
+							</div>
+							<div class="col-md-6 col-xs-6 price text-right">
+								<h3><label><i class="fa fa-inr"></i>10000000.0</label></h3>
+							</div>
+						</div>
+						<p>Its everyone disere to get marry here</p>
+						<div class="row">
+							<div class="col-md-6">
+								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span>Like</a> 
+							</div>
+							<div class="col-md-6">
+								<a href="<c:url value="/serviceDetail/39"/>" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Buy</a></div>
+						</div>
+
+						<p> </p>
+					</div>
+				</div>
+			</div>
+            <div class="col-sm-6 col-md-4">
+				<div class="thumbnail plan" >
+					<h4 class="text-center"><span class="label label-info">Catrer</span></h4>
+					<img src="<c:url value="/resources/img/cate.jpeg"/>" class="img-responsive">
+					<div class="caption">
+						<div class="row">
+							<div class="col-md-6 col-xs-6">
+								<h3>Radhe Catrer</h3>
+							</div>
+							<div class="col-md-6 col-xs-6 price text-right">
+								<h3>
+								<label><i class="fa fa-inr"></i>999999.0</label></h3>
+							</div>
+						</div>
+						<p>We serve best and fresh food</p>
+						<div class="row">
+							<div class="col-md-6">
+								<a class="btn btn-primary btn-product"><span class="glyphicon glyphicon-thumbs-up"></span> Like</a> 
+							</div>
+							<div class="col-md-6">
+								<a href="<c:url value="/serviceDetail/44"/>" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</a></div>
+						</div>
+
+						<p> </p>
+					</div>
+				</div>
+			</div>
+            
+        </div> 
+
+	</div>
+</div>
+	
     <!--Footer-->
 	<jsp:include page="/WEB-INF/views/footer.jsp"></jsp:include>
 	<!--  

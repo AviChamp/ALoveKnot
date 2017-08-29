@@ -21,7 +21,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 
+import com.daoImpl.CartDaoImpl;
 import com.daoImpl.CategoryDaoImpl;
+import com.daoImpl.OrderDaoImpl;
 import com.daoImpl.ServiceDaoImpl;
 import com.daoImpl.UserDaoImpl;
 import com.daoImpl.VendorDaoImpl;
@@ -44,6 +46,13 @@ public class homeController {
 	
 	@Autowired
 	ServiceDaoImpl serviceDaoImpl;
+	
+	@Autowired
+	CartDaoImpl cartDaoImpl;
+
+	@Autowired
+	OrderDaoImpl orderDaoImpl;
+
 	
     @RequestMapping("/")
     public String index() {

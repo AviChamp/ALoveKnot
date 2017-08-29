@@ -8,11 +8,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.dao.CartDao;
+import com.dao.CategoryDao;
 import com.model.Cart;
 import com.model.Service;
 
 @Repository("cartDaoImpl")
-public class CartDaoImpl {
+public class CartDaoImpl implements CartDao {
 	
 	@Autowired
     SessionFactory sessionFactory;

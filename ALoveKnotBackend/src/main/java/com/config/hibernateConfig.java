@@ -13,16 +13,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.model.User;
-import com.daoImpl.CategoryDaoImpl;
-import com.daoImpl.ServiceDaoImpl;
-import com.daoImpl.UserDaoImpl;
-import com.daoImpl.VendorDaoImpl;
-import com.model.Cart;
-import com.model.Category;
-import com.model.Orders;
-import com.model.Vendor;
-import com.model.Service;
+import com.model.*;
+import com.daoImpl.*;
 
 @Configuration
 @ComponentScan("com")
@@ -66,33 +58,45 @@ public class hibernateConfig {
 	return sessionBuilder.buildSessionFactory();
 	}
 
-//	@Autowired
-//	@Bean(name="userDaoImpl")
-//	public UserDaoImpl getUserDAO(SessionFactory sessionFactory)
-//	{
-//		return new UserDaoImpl(sessionFactory);
-//	}
-//    
-//	@Autowired
-//	@Bean(name="categoryDaoImpl")
-//	public CategoryDaoImpl getCategoryDAO(SessionFactory sessionFactory)
-//	{
-//		return new CategoryDaoImpl(sessionFactory);
-//	}
-//	
-//	@Autowired
-//	@Bean(name="serviceDaoImpl")
-//	public ServiceDaoImpl getServiceDAO(SessionFactory sessionFactory)
-//	{
-//		return new ServiceDaoImpl(sessionFactory);
-//	}
-//	
-//	@Autowired
-//	@Bean(name="vendorDaoImpl")
-//	public VendorDaoImpl getVendorDAO(SessionFactory sessionFactory)
-//	{
-//		return new VendorDaoImpl(sessionFactory);
-//	}
+	@Autowired
+	@Bean(name="userDaoImpl")
+	public UserDaoImpl getUserDAO(SessionFactory sessionFactory)
+	{
+		return new UserDaoImpl(sessionFactory);
+	}
+    
+	@Autowired
+	@Bean(name="categoryDaoImpl")
+	public CategoryDaoImpl getCategoryDAO(SessionFactory sessionFactory)
+	{
+		return new CategoryDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="serviceDaoImpl")
+	public ServiceDaoImpl getServiceDAO(SessionFactory sessionFactory)
+	{
+		return new ServiceDaoImpl(sessionFactory);
+	}
+	
+	@Autowired
+	@Bean(name="vendorDaoImpl")
+	public VendorDaoImpl getVendorDAO(SessionFactory sessionFactory)
+	{
+		return new VendorDaoImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="cartDaoImpl")
+	public CartDaoImpl getCartDAO(SessionFactory sessionFactory)
+	{
+		return new CartDaoImpl(sessionFactory);
+	}
+	@Autowired
+	@Bean(name="orderDaoImpl")
+	public OrderDaoImpl getOrderDAO(SessionFactory sessionFactory)
+	{
+		return new OrderDaoImpl(sessionFactory);
+	}
 
 
 	@Autowired
